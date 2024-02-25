@@ -4,7 +4,7 @@
 
 // last parent node: Math.floor(size/2 -1 )
 
-
+// time complexity: O(nlogn)
 
 const heapSort = (arr) => {
     const n = arr.length
