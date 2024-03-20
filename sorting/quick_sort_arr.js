@@ -50,3 +50,7 @@ testCases.forEach((testCase, index) => {
     console.log("Sorted Output:", sortedOutput)
     console.log("------------------------")
 })
+
+module.exports = {
+    sort
+}
