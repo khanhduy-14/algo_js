@@ -19,4 +19,4 @@ const sieveEratosthenes = (n) => {
 
 
 const listPrimeLessThan100 = sieveEratosthenes(100)
-console.log(listPrimeLessThan100)
+console.log(listPrimeLessThan100)   
