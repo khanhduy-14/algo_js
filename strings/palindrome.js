@@ -1,5 +1,4 @@
 const isPalindrome = (str) => {
-    if (str.length <= 1) return true
     let left = 0, right = str.length - 1
     while (left <= right) {
         if (str[left] !== str[right]) {
