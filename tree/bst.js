@@ -67,6 +67,33 @@ class BinarySearchTree {
         return root
 
     }
+
+    static inOrder(tree) {
+        if (tree === null) {
+            return
+        }
+        this.inOrder(tree.left)
+        console.log(tree.val)
+        this.inOrder(tree.right)
+    }
+
+    static preOrder(tree) {
+        if (tree === null) {
+            return
+        }
+        console.log(tree.val)
+        this.inOrder(tree.left)
+        this.inOrder(tree.right)
+    }
+
+    static postOrder(tree) {
+        if (tree === null) {
+            return
+        }
+        this.inOrder(tree.left)
+        this.inOrder(tree.right)
+        console.log(tree.val)
+    }
 }
 
 const tree = new BinarySearchTree(4, null, null)
@@ -75,9 +102,6 @@ BinarySearchTree.insert(tree, 2)
 BinarySearchTree.insert(tree, 6)
 BinarySearchTree.insert(tree, 5)
 BinarySearchTree.insert(tree, 7)
-
-BinarySearchTree.remove(tree, 7)
-
-console.log(tree);
+BinarySearchTree.postOrder(tree);
 
 
