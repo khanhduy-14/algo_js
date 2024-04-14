@@ -1,3 +1,33 @@
+class Queue {
+    constructor() {
+        this.items = {}
+        this.frontIndex = 0
+        this.backIndex = 0
+    }
+    enqueue(item) {
+        this.items[this.backIndex] = item
+        this.backIndex++
+        return item
+    }
+    dequeue() {
+        const item = this.items[this.frontIndex]
+        delete this.items[this.frontIndex]
+        this.frontIndex++
+        return item
+    }
+    length() {
+        return this.backIndex - this.frontIndex
+    }
+    traversal(callback) {
+        for (let i = this.frontIndex; i < this.backIndex; i++) {
+            callback(this.items[i])
+        }
+    }
+    getQueue() {
+        return this.items
+    }
+}
+
 class BinarySearchTree {
     constructor(val, left, right) {
         this.val = val
@@ -94,6 +124,30 @@ class BinarySearchTree {
         this.inOrder(tree.right)
         console.log(tree.val)
     }
+
+    static bfs(tree) {
+        const queue = new Queue()
+        if (tree) {
+            queue.enqueue(tree)
+        }
+        let level = 0
+        while (queue.length() > 0) {
+            console.log('Level: ', level)
+            const start = queue.frontIndex
+            const end = queue.backIndex
+            for (let i = start; i < end; i++) {
+                const cur = queue.dequeue()
+                console.log(cur.val)
+                if (cur.left) {
+                    queue.enqueue(cur.left)
+                }
+                if (cur.right) {
+                    queue.enqueue(cur.right)
+                }
+            }
+            level++
+        }
+    }
 }
 
 const tree = new BinarySearchTree(4, null, null)
@@ -102,6 +156,7 @@ BinarySearchTree.insert(tree, 2)
 BinarySearchTree.insert(tree, 6)
 BinarySearchTree.insert(tree, 5)
 BinarySearchTree.insert(tree, 7)
-BinarySearchTree.postOrder(tree);
+// BinarySearchTree.postOrder(tree);
+BinarySearchTree.bfs(tree);
 
 
